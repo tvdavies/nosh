@@ -16,6 +16,17 @@ Personal diet tracking app for low-carb, high-fat diet with carb cycling and int
 
 ## Completed Issues
 
+### Issue #25: Add light/dark mode toggle ✅
+**Completed:** 2026-01-06
+
+Added dark mode support using next-themes:
+- Theme toggle button in header (sun/moon icons)
+- System preference detection as default
+- Theme persists across sessions (localStorage)
+- No flash of wrong theme on load
+- Works with Tailwind's `dark:` variants
+- All existing components use CSS variables for theming
+
 ### Issue #16: Create reference/info page ✅
 **Completed:** 2026-01-06
 
