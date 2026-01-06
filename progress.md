@@ -10,7 +10,7 @@ Personal diet tracking app for low-carb, high-fat diet with carb cycling and int
 
 ## Current Status
 
-**In Progress:** Issue #2 - Set up meal ideas data
+**In Progress:** Issue #3 - Create utility to determine today's day type
 
 ---
 
@@ -32,11 +32,21 @@ Created diet module at `lib/diet/` with:
 - Constants: `DAY_TYPE_CONFIG`, `WEEKLY_SCHEDULE`, `DAY_INDEX`, `DAYS_OF_WEEK`
 - Colour scheme: emerald (low-carb), orange (carbs), gray (fast)
 
+### Issue #2: Set up meal ideas data ✅
+**Completed:** 2026-01-06
+
+Created meals module at `lib/meals/` with:
+- 45+ meal ideas across all categories
+- Types: `Meal`, `MealCategory`, `MealsByCategory`
+- Utility functions: `getMeals()`, `getMealsByDayType()`, `getMealsByCategory()`
+- Categories: breakfast, lunch, dinner, snack
+- Each meal tagged with compatible day types
+
 ---
 
 ## Issue Log
 
-### Issue #2: Set up meal ideas data
+### Issue #3: Create utility to determine today's day type
 **Status:** In Progress
 **Started:** 2026-01-06
 
@@ -46,7 +56,7 @@ Created diet module at `lib/diet/` with:
 
 1. [x] #23 - shadcn/ui setup (foundation for UI)
 2. [x] #1 - Diet plan data model
-3. [ ] #2 - Meal ideas data
+3. [x] #2 - Meal ideas data
 4. [ ] #3 - Day type utility
 5. [ ] #18 - App shell and navigation
 6. [ ] #4 - Daily view hero
