@@ -1,11 +1,12 @@
 'use client';
 
-import { X } from 'lucide-react';
+import { Search, X } from 'lucide-react';
 import { useMemo, useState } from 'react';
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 import { DAY_TYPE_CONFIG, type DayType } from '@/lib/diet';
 import { MEALS, type Meal, type MealCategory } from '@/lib/meals';
 import { cn } from '@/lib/utils';
@@ -78,14 +79,22 @@ function CategorySection({ category, meals }: { category: MealCategory; meals: M
 }
 
 export function MealLibrary() {
+  const [searchQuery, setSearchQuery] = useState('');
   const [selectedDayTypes, setSelectedDayTypes] = useState<Set<DayType>>(new Set());
   const [selectedCategories, setSelectedCategories] = useState<Set<MealCategory>>(new Set());
 
-  const hasFilters = selectedDayTypes.size > 0 || selectedCategories.size > 0;
+  const hasFilters = selectedDayTypes.size > 0 || selectedCategories.size > 0 || searchQuery.length > 0;
 
-  // Filter meals based on selections
+  // Filter meals based on search and selections
   const filteredMeals = useMemo(() => {
+    const query = searchQuery.toLowerCase().trim();
+
     return MEALS.filter((meal) => {
+      // Search filter - check name and description
+      const matchesSearch = query.length === 0 ||
+        meal.name.toLowerCase().includes(query) ||
+        meal.description?.toLowerCase().includes(query);
+
       // If no day type filter, include all; otherwise check if meal matches any selected day type
       const matchesDayType = selectedDayTypes.size === 0 ||
         meal.dayTypes.some((dt) => selectedDayTypes.has(dt));
@@ -94,9 +103,9 @@ export function MealLibrary() {
       const matchesCategory = selectedCategories.size === 0 ||
         selectedCategories.has(meal.category);
 
-      return matchesDayType && matchesCategory;
+      return matchesSearch && matchesDayType && matchesCategory;
     });
-  }, [selectedDayTypes, selectedCategories]);
+  }, [searchQuery, selectedDayTypes, selectedCategories]);
 
   // Group filtered meals by category
   const mealsByCategory = useMemo(() => {
@@ -137,6 +146,7 @@ export function MealLibrary() {
   };
 
   const clearFilters = () => {
+    setSearchQuery('');
     setSelectedDayTypes(new Set());
     setSelectedCategories(new Set());
   };
@@ -150,6 +160,18 @@ export function MealLibrary() {
           <span className="text-sm text-muted-foreground">
             {filteredMeals.length} {filteredMeals.length === 1 ? 'meal' : 'meals'}
           </span>
+        </div>
+
+        {/* Search */}
+        <div className="relative mt-3">
+          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Input
+            type="text"
+            placeholder="Search meals..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-9"
+          />
         </div>
 
         {/* Day type filters */}
@@ -215,14 +237,18 @@ export function MealLibrary() {
         {filteredMeals.length === 0 ? (
           <Card>
             <CardContent className="py-8 text-center text-muted-foreground">
-              No meals match your filters.
+              {searchQuery ? (
+                <>No meals found for &quot;{searchQuery}&quot;</>
+              ) : (
+                <>No meals match your filters.</>
+              )}
               <br />
               <Button
                 variant="link"
                 onClick={clearFilters}
                 className="mt-2 h-auto p-0 text-sm"
               >
-                Clear filters
+                Clear {searchQuery ? 'search' : 'filters'}
               </Button>
             </CardContent>
           </Card>

@@ -16,6 +16,16 @@ Personal diet tracking app for low-carb, high-fat diet with carb cycling and int
 
 ## Completed Issues
 
+### Issue #11: Add search to meal library ✅
+**Completed:** 2026-01-06
+
+Added text search to the meal library:
+- Search input field with icon in the sticky header
+- Searches both meal names and descriptions
+- Combines with existing day type and category filters
+- Shows contextual "no results" message
+- Clear search/filters button
+
 ### Issue #15: Add contextual suggested prompts ✅
 **Completed:** 2026-01-06
 
