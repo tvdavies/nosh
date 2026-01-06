@@ -10,7 +10,7 @@ Personal diet tracking app for low-carb, high-fat diet with carb cycling and int
 
 ## Current Status
 
-**In Progress:** Issue #12 - Set up AI chat infrastructure
+**In Progress:** Issue #13 - Create chat UI component
 
 ---
 
@@ -116,11 +116,23 @@ Implemented Google OAuth with NextAuth.js v5:
 
 **Setup required:** User must configure Google OAuth credentials and set ALLOWED_EMAILS in .env.local
 
+### Issue #12: Set up AI chat infrastructure ✅
+**Completed:** 2026-01-06
+
+Implemented AI chat with Vercel AI SDK:
+- `lib/chat/system-prompt.ts` - Dynamic system prompt with diet context
+- `app/api/chat/route.ts` - Streaming chat API endpoint
+- Uses OpenAI gpt-4o-mini model
+- System prompt includes today's day type and full diet plan context
+- Protected by authentication (returns 401 if not logged in)
+
+**Setup required:** User must set OPENAI_API_KEY in .env.local
+
 ---
 
 ## Issue Log
 
-### Issue #12: Set up AI chat infrastructure
+### Issue #13: Create chat UI component
 **Status:** In Progress
 **Started:** 2026-01-06
 
@@ -138,7 +150,7 @@ Implemented Google OAuth with NextAuth.js v5:
 8. [x] #9 - Meal library page
 9. [x] #5 - Today's meal suggestions
 10. [x] #26 - Authentication
-9. [ ] #12 - AI chat infrastructure
+11. [x] #12 - AI chat infrastructure
 10. [ ] #13 - Chat UI
 11. [ ] #22 - PWA support
 
