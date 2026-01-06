@@ -16,6 +16,17 @@ Personal diet tracking app for low-carb, high-fat diet with carb cycling and int
 
 ## Completed Issues
 
+### Issue #6: Add quick tips for today's day type ✅
+**Completed:** 2026-01-06
+
+Added contextual quick tips to the daily view:
+- 2 random tips displayed per day (consistent throughout the day)
+- Tips stored in `DayTypeConfig` with 4 tips per day type
+- Highlighted "Quick tips" section with lightbulb icon
+- Low-carb: fat sources, snacks, label checking
+- Carb day: timing, activity, food suggestions
+- Fast day: hunger management, allowed foods
+
 ### Issue #25: Add light/dark mode toggle ✅
 **Completed:** 2026-01-06
 

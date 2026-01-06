@@ -17,6 +17,12 @@ export const DAY_TYPE_CONFIG: Record<DayType, DayTypeConfig> = {
       'Eat plenty of protein',
       'Watch for hidden carbs in sauces',
     ],
+    tips: [
+      'Add extra olive oil or butter to meals for satiety',
+      'Cheese and nuts make great snacks',
+      'Check labels - carbs hide in surprising places',
+      'Avocado is your friend today',
+    ],
   },
   carbs: {
     type: 'carbs',
@@ -30,6 +36,12 @@ export const DAY_TYPE_CONFIG: Record<DayType, DayTypeConfig> = {
       'Balance with protein and veg',
       'Don\'t go overboard',
     ],
+    tips: [
+      'Great day for pasta, rice, or bread',
+      'Perfect timing for a workout or football',
+      'Refuel your glycogen stores',
+      'Enjoy some fruit today',
+    ],
   },
   fast: {
     type: 'fast',
@@ -42,6 +54,12 @@ export const DAY_TYPE_CONFIG: Record<DayType, DayTypeConfig> = {
       'If eating, keep under 500kcal',
       'Stay hydrated',
       'One small meal if needed',
+    ],
+    tips: [
+      'Hunger comes in waves - it will pass',
+      'Keep busy to distract from hunger',
+      'Black coffee can help suppress appetite',
+      'If you must eat, choose eggs or chicken',
     ],
   },
 };

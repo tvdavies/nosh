@@ -20,6 +20,7 @@ export interface DayTypeConfig {
   color: string;
   bgColor: string;
   rules: string[];
+  tips: string[]; // Quick actionable tips for the day
   carbLimit?: number; // grams, undefined for no specific limit
 }
 
