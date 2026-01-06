@@ -1,5 +1,11 @@
 import { openai } from '@ai-sdk/openai';
-import { streamText } from 'ai';
+import {
+  convertToModelMessages,
+  createUIMessageStream,
+  createUIMessageStreamResponse,
+  streamText,
+  type UIMessage,
+} from 'ai';
 
 import { auth } from '@/lib/auth';
 import { generateSystemPrompt } from '@/lib/chat/system-prompt';
@@ -16,19 +22,31 @@ export async function POST(req: Request) {
   }
 
   try {
-    const { messages } = await req.json();
+    const { messages } = (await req.json()) as { messages: UIMessage[] };
 
     // Generate system prompt with today's context
     const systemPrompt = generateSystemPrompt();
 
-    // Stream the response
-    const result = await streamText({
-      model: openai('gpt-4o-mini'),
-      system: systemPrompt,
-      messages,
+    // Convert UI messages to model messages
+    const modelMessages = await convertToModelMessages(messages);
+
+    // Create a UI message stream
+    const stream = createUIMessageStream({
+      execute: async ({ writer }) => {
+        const result = streamText({
+          model: openai('gpt-4o-mini'),
+          system: systemPrompt,
+          messages: modelMessages,
+        });
+
+        // Write text parts as they come in
+        for await (const chunk of result.textStream) {
+          writer.write({ type: 'text-delta', delta: chunk, id: 'msg' });
+        }
+      },
     });
 
-    return result.toTextStreamResponse();
+    return createUIMessageStreamResponse({ stream });
   } catch (error) {
     console.error('Chat API error:', error);
     return new Response('Internal Server Error', { status: 500 });
