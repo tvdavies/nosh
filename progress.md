@@ -16,6 +16,19 @@ Personal diet tracking app for low-carb, high-fat diet with carb cycling and int
 
 ## Completed Issues
 
+### Issue #10: Add filtering to meal library ✅
+**Completed:** 2026-01-06
+
+Added interactive filtering to the meal library page:
+- Filter by day type (Low-carb, Carbs, Fast) using toggle buttons
+- Filter by meal category (Breakfast, Lunch, Dinner, Snacks)
+- Filters can be combined (e.g., low-carb + breakfast)
+- Sticky filter header that stays visible on scroll
+- Shows count of matching meals
+- Clear all filters button when filters are active
+- Empty state with clear filters link when no matches
+- Category sections show individual meal counts
+
 ### Issue #22: Add PWA support ✅
 **Completed:** 2026-01-06
 
