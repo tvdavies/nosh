@@ -16,6 +16,15 @@ Personal diet tracking app for low-carb, high-fat diet with carb cycling and int
 
 ## Completed Issues
 
+### Issue #15: Add contextual suggested prompts ✅
+**Completed:** 2026-01-06
+
+Made chat suggested prompts contextual to today's day type:
+- Low-carb: lunch ideas, low-carb foods, snack suggestions
+- Carb day: pre-football meals, pizza questions, energy foods
+- Fast day: allowed drinks, hunger help, tips for fasting
+- 4 prompts per day type, clickable to start conversation
+
 ### Issue #6: Add quick tips for today's day type ✅
 **Completed:** 2026-01-06
 

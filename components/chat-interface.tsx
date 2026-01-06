@@ -8,14 +8,30 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import { getDayType, type DayType } from '@/lib/diet';
 import { cn } from '@/lib/utils';
 
-const SUGGESTED_PROMPTS = [
-  'What can I eat for lunch today?',
-  'Is halloumi low-carb?',
-  "I'm hungry, what can I have?",
-  'Help me plan today',
-];
+// Contextual prompts by day type
+const PROMPTS_BY_DAY_TYPE: Record<DayType, string[]> = {
+  'low-carb': [
+    'What can I have for a quick lunch?',
+    'Is halloumi low-carb?',
+    'What are good low-carb snacks?',
+    'Help me plan today',
+  ],
+  carbs: [
+    'What should I eat before football?',
+    'Can I have pizza tonight?',
+    'What carbs are best for energy?',
+    'Help me plan today',
+  ],
+  fast: [
+    'What drinks are allowed today?',
+    "I'm really hungry, help!",
+    'Can I have any food at all?',
+    'Tips for getting through today',
+  ],
+};
 
 // Helper to extract text content from message parts
 function getMessageText(message: UIMessage): string {
@@ -27,6 +43,7 @@ function getMessageText(message: UIMessage): string {
 
 export function ChatInterface() {
   const [inputValue, setInputValue] = useState('');
+  const [dayType, setDayType] = useState<DayType | null>(null);
 
   const transport = useMemo(
     () => new DefaultChatTransport({ api: '/api/chat' }),
@@ -40,6 +57,11 @@ export function ChatInterface() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Get today's day type on mount (client-side to avoid hydration mismatch)
+  useEffect(() => {
+    setDayType(getDayType(new Date()));
+  }, []);
+
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -49,6 +71,9 @@ export function ChatInterface() {
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
+
+  // Get contextual prompts for today
+  const suggestedPrompts = dayType ? PROMPTS_BY_DAY_TYPE[dayType] : [];
 
   const isLoading = status === 'streaming' || status === 'submitted';
 
@@ -76,7 +101,7 @@ export function ChatInterface() {
               Ask me anything about your diet plan!
             </p>
             <div className="flex flex-wrap justify-center gap-2">
-              {SUGGESTED_PROMPTS.map((prompt) => (
+              {suggestedPrompts.map((prompt) => (
                 <Button
                   key={prompt}
                   variant="outline"
