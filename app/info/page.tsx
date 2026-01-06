@@ -195,6 +195,61 @@ export default function InfoPage() {
             </div>
           </AccordionContent>
         </AccordionItem>
+
+        {/* Shopping List */}
+        <AccordionItem value="shopping-list" className="rounded-lg border px-4">
+          <AccordionTrigger className="text-left font-semibold hover:no-underline">
+            Shopping List Staples
+          </AccordionTrigger>
+          <AccordionContent className="space-y-4 pb-4 text-sm">
+            <div>
+              <h4 className="mb-2 font-medium">Proteins</h4>
+              <p className="text-muted-foreground">
+                Eggs, bacon, chicken thighs/breasts, beef mince, steak, salmon, mackerel,
+                sardines, prawns, pork chops
+              </p>
+            </div>
+            <div>
+              <h4 className="mb-2 font-medium">Fats &amp; Dairy</h4>
+              <p className="text-muted-foreground">
+                Olive oil, butter, coconut oil, cheese (cheddar, halloumi, cream cheese),
+                Greek yogurt, double cream, nuts (almonds, walnuts, macadamias)
+              </p>
+            </div>
+            <div>
+              <h4 className="mb-2 font-medium">Low-Carb Vegetables</h4>
+              <p className="text-muted-foreground">
+                Broccoli, spinach, kale, cauliflower, asparagus, courgette,
+                green beans, peppers, mushrooms, avocado, lettuce
+              </p>
+            </div>
+            <div>
+              <h4 className="mb-2 font-medium flex items-center gap-2">
+                Carb Day Staples
+                <Badge className="bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200">
+                  Carbs
+                </Badge>
+              </h4>
+              <p className="text-muted-foreground">
+                Oats, rice, pasta, bread, potatoes, sweet potatoes,
+                bananas, apples, berries
+              </p>
+            </div>
+            <div>
+              <h4 className="mb-2 font-medium">Pantry Essentials</h4>
+              <p className="text-muted-foreground">
+                Salt, pepper, herbs (rosemary, thyme, oregano), garlic, stock cubes,
+                mayonnaise, mustard, soy sauce, hot sauce, olives
+              </p>
+            </div>
+            <div>
+              <h4 className="mb-2 font-medium">Drinks</h4>
+              <p className="text-muted-foreground">
+                Coffee, tea, sparkling water, bone broth
+              </p>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
       </Accordion>
     </div>
   );

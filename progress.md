@@ -16,6 +16,17 @@ Personal diet tracking app for low-carb, high-fat diet with carb cycling and int
 
 ## Completed Issues
 
+### Issue #17: Add shopping list staples ✅
+**Completed:** 2026-01-06
+
+Added shopping list section to the info/guide page:
+- Proteins: eggs, bacon, chicken, beef, fish, prawns
+- Fats & Dairy: oils, butter, cheese, yogurt, cream, nuts
+- Low-Carb Vegetables: broccoli, spinach, cauliflower, etc.
+- Carb Day Staples: oats, rice, pasta, bread, potatoes, fruit
+- Pantry Essentials: seasonings, condiments, olives
+- Drinks: coffee, tea, sparkling water, bone broth
+
 ### Issue #11: Add search to meal library ✅
 **Completed:** 2026-01-06
 
