@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 
+import { Header } from '@/components/header';
 import { Navigation } from '@/components/navigation';
 
 import './globals.css';
@@ -37,7 +38,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <main className="mx-auto min-h-screen max-w-lg pb-20">
+        <Header />
+        <main className="mx-auto min-h-screen max-w-lg pb-20 pt-14">
           {children}
         </main>
         <Navigation />
