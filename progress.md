@@ -10,11 +10,24 @@ Personal diet tracking app for low-carb, high-fat diet with carb cycling and int
 
 ## Current Status
 
-**In Progress:** Issue #22 - Add PWA support
+**Ready for next issue**
 
 ---
 
 ## Completed Issues
+
+### Issue #22: Add PWA support ✅
+**Completed:** 2026-01-06
+
+Added Progressive Web App capabilities:
+- Installed `@ducanh2912/next-pwa` for service worker generation
+- Created `public/manifest.json` with app metadata
+- Generated app icons (192x192, 512x512) using Lucide Utensils icon
+- Created Apple touch icon (180x180)
+- Updated `app/layout.tsx` with PWA metadata (manifest, icons, theme-color)
+- Updated build script to use webpack (required for PWA plugin)
+
+**Note:** Build uses `--webpack` flag as PWA plugin requires webpack (not Turbopack).
 
 ### Issue #23: Set up shadcn/ui component library ✅
 **Completed:** 2026-01-06
@@ -141,14 +154,6 @@ Created ChatInterface component (`components/chat-interface.tsx`):
 
 ---
 
-## Issue Log
-
-### Issue #22: Add PWA support
-**Status:** In Progress
-**Started:** 2026-01-06
-
----
-
 ## Build Order (High Priority First)
 
 1. [x] #23 - shadcn/ui setup (foundation for UI)
@@ -163,7 +168,7 @@ Created ChatInterface component (`components/chat-interface.tsx`):
 10. [x] #26 - Authentication
 11. [x] #12 - AI chat infrastructure
 12. [x] #13 - Chat UI
-11. [ ] #22 - PWA support
+11. [x] #22 - PWA support
 
 ---
 
