@@ -10,7 +10,7 @@ Personal diet tracking app for low-carb, high-fat diet with carb cycling and int
 
 ## Current Status
 
-**In Progress:** Issue #1 - Set up diet plan data model
+**In Progress:** Issue #2 - Set up meal ideas data
 
 ---
 
@@ -24,11 +24,19 @@ Installed shadcn/ui with the following components:
 
 Configuration: New York style, neutral base colour, CSS variables enabled.
 
+### Issue #1: Set up diet plan data model ✅
+**Completed:** 2026-01-06
+
+Created diet module at `lib/diet/` with:
+- TypeScript types: `DayType`, `DayOfWeek`, `DayTypeConfig`, `DayScheduleEntry`
+- Constants: `DAY_TYPE_CONFIG`, `WEEKLY_SCHEDULE`, `DAY_INDEX`, `DAYS_OF_WEEK`
+- Colour scheme: emerald (low-carb), orange (carbs), gray (fast)
+
 ---
 
 ## Issue Log
 
-### Issue #1: Set up diet plan data model
+### Issue #2: Set up meal ideas data
 **Status:** In Progress
 **Started:** 2026-01-06
 
@@ -37,7 +45,7 @@ Configuration: New York style, neutral base colour, CSS variables enabled.
 ## Build Order (High Priority First)
 
 1. [x] #23 - shadcn/ui setup (foundation for UI)
-2. [ ] #1 - Diet plan data model
+2. [x] #1 - Diet plan data model
 3. [ ] #2 - Meal ideas data
 4. [ ] #3 - Day type utility
 5. [ ] #18 - App shell and navigation
