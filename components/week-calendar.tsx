@@ -1,8 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import {
   DAY_TYPE_CONFIG,
@@ -21,11 +23,51 @@ interface WeekDay {
   notes?: string;
 }
 
+// Get the Monday of the week containing the given date
+function getWeekStart(date: Date): Date {
+  const d = new Date(date);
+  const day = d.getDay();
+  const diff = d.getDate() - day + (day === 0 ? -6 : 1); // Adjust for Sunday
+  d.setDate(diff);
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
+
+// Add days to a date
+function addDays(date: Date, days: number): Date {
+  const result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+}
+
+// Format week range
+function formatWeekRange(startDate: Date): string {
+  const endDate = addDays(startDate, 6);
+  const startMonth = startDate.toLocaleDateString('en-GB', { month: 'short' });
+  const endMonth = endDate.toLocaleDateString('en-GB', { month: 'short' });
+
+  if (startMonth === endMonth) {
+    return `${startDate.getDate()} - ${endDate.getDate()} ${startMonth}`;
+  }
+  return `${startDate.getDate()} ${startMonth} - ${endDate.getDate()} ${endMonth}`;
+}
+
 export function WeekCalendar() {
   const [weekDays, setWeekDays] = useState<WeekDay[]>([]);
+  const [weekStart, setWeekStart] = useState<Date | null>(null);
+  const [isCurrentWeek, setIsCurrentWeek] = useState(true);
 
+  // Initialize with current week
   useEffect(() => {
-    const schedule = getWeekSchedule();
+    const today = new Date();
+    setWeekStart(getWeekStart(today));
+  }, []);
+
+  // Load week schedule when weekStart changes
+  useEffect(() => {
+    if (!weekStart) return;
+
+    const schedule = getWeekSchedule(weekStart);
     setWeekDays(
       schedule.map((day) => ({
         date: day.date,
@@ -35,6 +77,26 @@ export function WeekCalendar() {
         notes: day.schedule.notes,
       }))
     );
+
+    // Check if this is the current week
+    const currentWeekStart = getWeekStart(new Date());
+    setIsCurrentWeek(weekStart.getTime() === currentWeekStart.getTime());
+  }, [weekStart]);
+
+  const goToPreviousWeek = useCallback(() => {
+    if (weekStart) {
+      setWeekStart(addDays(weekStart, -7));
+    }
+  }, [weekStart]);
+
+  const goToNextWeek = useCallback(() => {
+    if (weekStart) {
+      setWeekStart(addDays(weekStart, 7));
+    }
+  }, [weekStart]);
+
+  const goToCurrentWeek = useCallback(() => {
+    setWeekStart(getWeekStart(new Date()));
   }, []);
 
   if (weekDays.length === 0) {
@@ -57,7 +119,44 @@ export function WeekCalendar() {
 
   return (
     <div className="space-y-2 p-4">
-      <h1 className="mb-4 text-2xl font-bold">This Week</h1>
+      {/* Header with navigation */}
+      <div className="mb-4 flex items-center justify-between">
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={goToPreviousWeek}
+          className="h-9 w-9"
+        >
+          <ChevronLeft className="h-4 w-4" />
+          <span className="sr-only">Previous week</span>
+        </Button>
+
+        <div className="text-center">
+          <h1 className="text-xl font-bold">
+            {isCurrentWeek ? 'This Week' : weekStart ? formatWeekRange(weekStart) : ''}
+          </h1>
+          {!isCurrentWeek && (
+            <Button
+              variant="link"
+              size="sm"
+              onClick={goToCurrentWeek}
+              className="h-auto p-0 text-xs text-muted-foreground"
+            >
+              Back to today
+            </Button>
+          )}
+        </div>
+
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={goToNextWeek}
+          className="h-9 w-9"
+        >
+          <ChevronRight className="h-4 w-4" />
+          <span className="sr-only">Next week</span>
+        </Button>
+      </div>
 
       {weekDays.map((day) => (
         <Card

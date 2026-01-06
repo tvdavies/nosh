@@ -16,6 +16,16 @@ Personal diet tracking app for low-carb, high-fat diet with carb cycling and int
 
 ## Completed Issues
 
+### Issue #8: Add navigation to weekly view ✅
+**Completed:** 2026-01-06
+
+Added week navigation to the weekly calendar:
+- Previous/next week buttons with chevron icons
+- "Back to today" link when viewing other weeks
+- Shows date range when not on current week (e.g., "30 Dec - 5 Jan")
+- Shows "This Week" when on current week
+- Maintains today highlighting correctly across weeks
+
 ### Issue #17: Add shopping list staples ✅
 **Completed:** 2026-01-06
 
