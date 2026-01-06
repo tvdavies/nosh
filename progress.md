@@ -10,7 +10,7 @@ Personal diet tracking app for low-carb, high-fat diet with carb cycling and int
 
 ## Current Status
 
-**In Progress:** Issue #4 - Create daily view hero component
+**In Progress:** Issue #7 - Create weekly calendar view
 
 ---
 
@@ -61,11 +61,21 @@ Created mobile-first navigation:
 - All route pages created: `/`, `/week`, `/meals`, `/chat`, `/info`
 - Responsive max-width container (max-w-lg)
 
+### Issue #4: Create daily view hero component ✅
+**Completed:** 2026-01-06
+
+Created DayHero component (`components/day-hero.tsx`):
+- Large, colour-coded card showing today's day type
+- Displays current date, day type label, and description
+- Shows carb limit badge for low-carb days
+- Lists day-specific guidelines/rules
+- Handles client-side hydration to avoid date mismatches
+
 ---
 
 ## Issue Log
 
-### Issue #4: Create daily view hero component
+### Issue #7: Create weekly calendar view
 **Status:** In Progress
 **Started:** 2026-01-06
 
@@ -78,7 +88,7 @@ Created mobile-first navigation:
 3. [x] #2 - Meal ideas data
 4. [x] #3 - Day type utility
 5. [x] #18 - App shell and navigation
-6. [ ] #4 - Daily view hero
+6. [x] #4 - Daily view hero
 7. [ ] #7 - Weekly calendar view
 8. [ ] #26 - Authentication
 9. [ ] #12 - AI chat infrastructure
