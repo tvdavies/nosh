@@ -16,6 +16,17 @@ Personal diet tracking app for low-carb, high-fat diet with carb cycling and int
 
 ## Completed Issues
 
+### Issue #16: Create reference/info page ✅
+**Completed:** 2026-01-06
+
+Created comprehensive diet guide page at `/info`:
+- Collapsible accordion sections for easy scanning
+- How It Works: LCHF, carb cycling, and intermittent fasting explained
+- Weekly Pattern: Visual schedule with colour-coded badges
+- Day Type Guidelines: Detailed rules for each day type
+- Tips & Tricks: Electrolytes, hydration, eating out, etc.
+- Quick Reference: Always good, carb days only, avoid/limit
+
 ### Issue #10: Add filtering to meal library ✅
 **Completed:** 2026-01-06
 
