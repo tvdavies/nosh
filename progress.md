@@ -10,7 +10,7 @@ Personal diet tracking app for low-carb, high-fat diet with carb cycling and int
 
 ## Current Status
 
-**In Progress:** Issue #7 - Create weekly calendar view
+**In Progress:** Issue #9 - Create meal library page
 
 ---
 
@@ -71,11 +71,22 @@ Created DayHero component (`components/day-hero.tsx`):
 - Lists day-specific guidelines/rules
 - Handles client-side hydration to avoid date mismatches
 
+### Issue #7: Create weekly calendar view ✅
+**Completed:** 2026-01-06
+
+Created WeekCalendar component (`components/week-calendar.tsx`):
+- Shows all 7 days (Mon-Sun) in a vertical list
+- Each day shows: day name, date, day type badge
+- Colour-coded by day type (emerald/orange/gray)
+- Highlights today with ring outline and "Today" badge
+- Shows special notes (e.g., "Football evening" for Tuesday)
+- Legend at bottom explaining colours
+
 ---
 
 ## Issue Log
 
-### Issue #7: Create weekly calendar view
+### Issue #9: Create meal library page
 **Status:** In Progress
 **Started:** 2026-01-06
 
@@ -89,7 +100,7 @@ Created DayHero component (`components/day-hero.tsx`):
 4. [x] #3 - Day type utility
 5. [x] #18 - App shell and navigation
 6. [x] #4 - Daily view hero
-7. [ ] #7 - Weekly calendar view
+7. [x] #7 - Weekly calendar view
 8. [ ] #26 - Authentication
 9. [ ] #12 - AI chat infrastructure
 10. [ ] #13 - Chat UI
