@@ -10,7 +10,7 @@ Personal diet tracking app for low-carb, high-fat diet with carb cycling and int
 
 ## Current Status
 
-**In Progress:** Issue #18 - Create app shell and navigation
+**In Progress:** Issue #4 - Create daily view hero component
 
 ---
 
@@ -51,11 +51,21 @@ Added utilities to `lib/diet/utils.ts`:
 - `getWeekSchedule()` - Get full week's schedule with dates
 - `formatDate()` / `formatDateShort()` - Date formatting helpers
 
+### Issue #18: Create app shell and navigation ✅
+**Completed:** 2026-01-06
+
+Created mobile-first navigation:
+- Bottom navigation bar with 5 tabs: Today, Week, Meals, Chat, Info
+- Active state highlighting with Lucide icons
+- Safe area support for notched phones
+- All route pages created: `/`, `/week`, `/meals`, `/chat`, `/info`
+- Responsive max-width container (max-w-lg)
+
 ---
 
 ## Issue Log
 
-### Issue #18: Create app shell and navigation
+### Issue #4: Create daily view hero component
 **Status:** In Progress
 **Started:** 2026-01-06
 
@@ -67,7 +77,7 @@ Added utilities to `lib/diet/utils.ts`:
 2. [x] #1 - Diet plan data model
 3. [x] #2 - Meal ideas data
 4. [x] #3 - Day type utility
-5. [ ] #18 - App shell and navigation
+5. [x] #18 - App shell and navigation
 6. [ ] #4 - Daily view hero
 7. [ ] #7 - Weekly calendar view
 8. [ ] #26 - Authentication
