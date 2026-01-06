@@ -10,7 +10,7 @@ Personal diet tracking app for low-carb, high-fat diet with carb cycling and int
 
 ## Current Status
 
-**In Progress:** Issue #5 - Show today's meal suggestions
+**In Progress:** Issue #26 - Add authentication
 
 ---
 
@@ -92,11 +92,21 @@ Created MealLibrary component (`components/meal-library.tsx`):
 - Legend explaining badge meanings
 - Clean, scannable card-based design
 
+### Issue #5: Show today's meal suggestions ✅
+**Completed:** 2026-01-06
+
+Created TodayMeals component (`components/today-meals.tsx`):
+- Shows meal ideas filtered to today's day type
+- Groups by category: Breakfast (3), Lunch (3), Dinner (3), Snacks (4)
+- Links to full meal library for "more" items
+- Special handling for fast days with minimal options
+- Responsive grid layout (2 columns on larger screens)
+
 ---
 
 ## Issue Log
 
-### Issue #5: Show today's meal suggestions
+### Issue #26: Add authentication
 **Status:** In Progress
 **Started:** 2026-01-06
 
@@ -112,7 +122,8 @@ Created MealLibrary component (`components/meal-library.tsx`):
 6. [x] #4 - Daily view hero
 7. [x] #7 - Weekly calendar view
 8. [x] #9 - Meal library page
-8. [ ] #26 - Authentication
+9. [x] #5 - Today's meal suggestions
+10. [ ] #26 - Authentication
 9. [ ] #12 - AI chat infrastructure
 10. [ ] #13 - Chat UI
 11. [ ] #22 - PWA support
