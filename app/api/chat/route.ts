@@ -1,3 +1,4 @@
+import { auth } from '@clerk/nextjs/server';
 import { openai } from '@ai-sdk/openai';
 import {
   convertToModelMessages,
@@ -7,17 +8,16 @@ import {
   type UIMessage,
 } from 'ai';
 
-import { auth } from '@/lib/auth';
 import { generateSystemPrompt } from '@/lib/chat/system-prompt';
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
 
 export async function POST(req: Request) {
-  // Check authentication
-  const session = await auth();
+  // Check authentication (also handled by middleware, but double-check here)
+  const { userId } = await auth();
 
-  if (!session?.user) {
+  if (!userId) {
     return new Response('Unauthorized', { status: 401 });
   }
 

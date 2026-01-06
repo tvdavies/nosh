@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 
+import { ClerkProviderWrapper } from '@/components/clerk-provider-wrapper';
 import { Header } from '@/components/header';
 import { Navigation } from '@/components/navigation';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -54,18 +55,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ThemeProvider>
-          <Header />
-          <main className="mx-auto min-h-screen max-w-lg pb-20 pt-14">
-            {children}
-          </main>
-          <Navigation />
-        </ThemeProvider>
-      </body>
-    </html>
+    <ClerkProviderWrapper>
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <ThemeProvider>
+            <Header />
+            <main className="mx-auto min-h-screen max-w-lg pb-20 pt-14">
+              {children}
+            </main>
+            <Navigation />
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProviderWrapper>
   );
 }
