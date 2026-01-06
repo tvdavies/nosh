@@ -14,3 +14,16 @@ export {
   DAYS_OF_WEEK,
   WEEKLY_SCHEDULE,
 } from './constants';
+
+// Utilities
+export {
+  formatDate,
+  formatDateShort,
+  getConfigForDate,
+  getDayIndex,
+  getDayOfWeek,
+  getDayType,
+  getScheduleForDate,
+  getTodayConfig,
+  getWeekSchedule,
+} from './utils';

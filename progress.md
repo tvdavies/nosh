@@ -10,7 +10,7 @@ Personal diet tracking app for low-carb, high-fat diet with carb cycling and int
 
 ## Current Status
 
-**In Progress:** Issue #3 - Create utility to determine today's day type
+**In Progress:** Issue #18 - Create app shell and navigation
 
 ---
 
@@ -42,11 +42,20 @@ Created meals module at `lib/meals/` with:
 - Categories: breakfast, lunch, dinner, snack
 - Each meal tagged with compatible day types
 
+### Issue #3: Create utility to determine today's day type ✅
+**Completed:** 2026-01-06
+
+Added utilities to `lib/diet/utils.ts`:
+- `getDayType()` - Get day type for any date
+- `getTodayConfig()` - Get full config for today
+- `getWeekSchedule()` - Get full week's schedule with dates
+- `formatDate()` / `formatDateShort()` - Date formatting helpers
+
 ---
 
 ## Issue Log
 
-### Issue #3: Create utility to determine today's day type
+### Issue #18: Create app shell and navigation
 **Status:** In Progress
 **Started:** 2026-01-06
 
@@ -57,7 +66,7 @@ Created meals module at `lib/meals/` with:
 1. [x] #23 - shadcn/ui setup (foundation for UI)
 2. [x] #1 - Diet plan data model
 3. [x] #2 - Meal ideas data
-4. [ ] #3 - Day type utility
+4. [x] #3 - Day type utility
 5. [ ] #18 - App shell and navigation
 6. [ ] #4 - Daily view hero
 7. [ ] #7 - Weekly calendar view
